@@ -36,33 +36,22 @@ public class Login extends HttpServlet {
             String login = request.getParameter("email");
             String pass = request.getParameter("password");
 
-//            System.out.println("pobrany login: " + login);
-//            System.out.println("pobrany pass: " + pass);
-
             User user;
             user = ud.read(login);
-
-
-//            System.out.println("odczytany email: " + user.getEmail());
-//            System.out.println("odczytany name: " + user.getName());
-//            System.out.println("odczytany surname: " + user.getSurname());
-//            System.out.println("odczytany nick: " + user.getNick());
-//            System.out.println("odczytany phone: " + user.getPhone());
-//            System.out.println("odczytany id: " + user.getId());
-//
-//
-//            String readPw = user.getPassword().trim().strip();
-//            System.out.println("odczytany pass: " + readPw);
-//            System.out.println("sprawdzenie hasła: " + BCrypt.checkpw(pass, readPw));
-
-
+//TODO cookies encryption
             if (login.equals(user.getEmail()) && BCrypt.checkpw(pass, user.getPassword())) {
                 request.setAttribute("success", true);
+                Cookie cookie = new Cookie("auth", "success");
+                cookie.setMaxAge(3600 * 24 * 3);
+                response.addCookie(cookie);
                 System.out.println("success");
+                //TODO should this be in cookie?
+                response.sendRedirect("/profil?user="+user.getEmail());
 
+            }else {
+                getServletContext().getRequestDispatcher("/guestBook/login.jsp").forward(request, response);
             }
 
-            getServletContext().getRequestDispatcher("/guestBook/login.jsp").forward(request, response);
         }
 
     }

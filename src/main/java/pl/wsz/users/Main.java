@@ -11,7 +11,7 @@ public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        getServletContext().getRequestDispatcher("/guestBookmain.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/guestBook/main.jsp").forward(request, response);
     }
 
     @Override

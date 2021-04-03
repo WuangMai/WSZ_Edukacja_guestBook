@@ -23,6 +23,14 @@ public class Register extends HttpServlet {
         String[] action = request.getParameterValues("action");
         UserDAO ud = new UserDAO();
 
+        Cookie[] cookies = request.getCookies();
+        boolean logged = false;
+        for (Cookie c : cookies){
+            if("auth".equals(c.getName())){
+                logged = true;
+            }
+        }
+
         try {
             DbUtil.getConnection();
         } catch (SQLException e) {
@@ -32,13 +40,14 @@ public class Register extends HttpServlet {
         if (action[0].equals("back")) {
             response.sendRedirect("/main");
         } else if (action[0].equals("add")) {
-            User user = new User(request.getParameter("name"), request.getParameter("surname"), request.getParameter("email"), request.getParameter("password"), request.getParameter("phone"));
-            ud.create(user);
-            System.out.println("Creating user with:");
-            System.out.println("Name: " + user.getName());
-            System.out.println("Email: " + user.getEmail());
-            System.out.println("Password: " + user.getPassword());
-            getServletContext().getRequestDispatcher("/main").forward(request, response);
+            if(logged) {
+                User user = new User(request.getParameter("name"), request.getParameter("surname"), request.getParameter("email"), request.getParameter("password"), request.getParameter("phone"));
+                ud.create(user);
+                getServletContext().getRequestDispatcher("/main").forward(request, response);
+            }else {
+//                TODO this does nothing right now. add actions in view
+                request.setAttribute("error","true");
+            }
         }
 
     }

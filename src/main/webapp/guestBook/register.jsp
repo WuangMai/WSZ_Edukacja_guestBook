@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         <label for="surname">Nazwisko</label>
-                        <input type="text" name="surname" class="form-control" id="surname" aria-describedby="text">
+                        <input type="text" name="surname" class="form-control " id="surname"  aria-describedby="text">
                     </div>
                     <div class="form-group">
                         <label for="email">Adres email</label>
@@ -40,11 +40,12 @@
                         <label for="re-pass"> Powtórz Hasło</label>
                         <input type="password" name="re-password" class="form-control" id="re-pass">
                     </div>
-                    <button type="submit" class="btn btn-primary" name="action" value="add">Rejestracja</button>
-                    <button type="submit" class="btn btn-secondary" name="action" value="back">Wróć</button>
+                    <button type="submit" id="addBtn" class="btn btn-primary " name="action" value="add" onmouseover="checkAndDisable()">Rejestracja</button>
+                    <button type="submit" id="back" class="btn btn-secondary" name="action" value="back">Wróć</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="/theme/js/validation.js"></script>
 <%@ include file="/footer.jsp" %>

@@ -40,7 +40,7 @@ public class Register extends HttpServlet {
         if (action[0].equals("back")) {
             response.sendRedirect("/main");
         } else if (action[0].equals("add")) {
-            if(logged) {
+            if(!logged) {
                 User user = new User(request.getParameter("name"), request.getParameter("surname"), request.getParameter("email"), request.getParameter("password"), request.getParameter("phone"));
                 ud.create(user);
                 getServletContext().getRequestDispatcher("/main").forward(request, response);

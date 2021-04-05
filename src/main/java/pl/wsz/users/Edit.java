@@ -28,11 +28,9 @@ public class Edit extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//        User user = new User(request.getParameter("name"), request.getParameter("surname"),
-//                request.getParameter("email"), request.getParameter("password"), request.getParameter("nick"),
-//                request.getParameter("phone"), request.getParameter("userId"));
-        User user = new User(request.getParameter("name"), request.getParameter("surname"),request.getParameter("email"),request.getParameter("password"),request.getParameter("nick"),request.getParameter("phone"),request.getParameter("userId"));
-
+//TODO dodać jeśli nie ma zmian to nie updateuj
+        User user = new User(request.getParameter("userId"),(Integer.parseInt(request.getParameter("id"))),request.getParameter("name"),request.getParameter("surname"),
+                request.getParameter("email"),request.getParameter("password"),request.getParameter("nick"),request.getParameter("phone"));
         System.out.println(user.getUserId());
 
         try {

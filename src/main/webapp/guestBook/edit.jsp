@@ -48,7 +48,12 @@
 
                 <div class="form-group">
                     <label for="userId"> Identyfikator użytkownika:</label>
-                    <input type="text" name="userId" class="form-control mb-4" id="userId" disabled value="${user.userId}">
+                    <input type="text" name="userId" class="form-control mb-4" id="userId"  value="${user.userId}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="id"> Identyfikator użytkownika:</label>
+                    <input type="text" name="id" class="form-control mb-4 " id="id"  value="${user.id}" readonly>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-2">Zatwierdź</button>

@@ -41,7 +41,7 @@
                     <label class="col-lg-6">${ user.phone}</label>
                 </div>
                 <div class="form-group">
-                    <a href="/edit?user=${user.email}" class="btn btn-primary btn-block col-lg-6"> Edytuj dane</a>
+                    <a href="/edit?u=${user.userId}" class="btn btn-primary btn-block col-lg-6"> Edytuj dane</a>
                     <a href="/logout" class="btn btn-danger btn-block col-lg-6"> Wyloguj się</a>
 
                 </div>

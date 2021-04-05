@@ -13,6 +13,17 @@ public class User {
     public User() {
     }
 
+    public User(String userId, int id, String name, String surname, String email, String password, String nick, String phone) {
+        this.userId = userId;
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.nick = nick;
+        this.phone = phone;
+    }
+
     public User(String name, String surname, String email, String password, String nick, String phone, String userId) {
         this.name = name;
         this.surname = surname;
@@ -28,6 +39,15 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+    }
+
+    public User(String name, String surname, String email, String password, String nick, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.nick = nick;
         this.phone = phone;
     }
 

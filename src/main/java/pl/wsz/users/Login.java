@@ -39,16 +39,17 @@ public class Login extends HttpServlet {
             User user;
             user = ud.read(login);
 //TODO cookies encryption
+
             if (login.equals(user.getEmail()) && BCrypt.checkpw(pass, user.getPassword())) {
                 request.setAttribute("success", true);
                 Cookie cookie = new Cookie("auth", "success");
                 cookie.setMaxAge(3600 * 24 * 3);
                 response.addCookie(cookie);
-                System.out.println("success");
+                System.out.println("login success");
                 //TODO should this be in cookie?
-                response.sendRedirect("/profil?u="+user.getUserId());
+                response.sendRedirect("/profil?u=" + user.getUserId());
 
-            }else {
+            } else {
                 getServletContext().getRequestDispatcher("/guestBook/login.jsp").forward(request, response);
             }
 

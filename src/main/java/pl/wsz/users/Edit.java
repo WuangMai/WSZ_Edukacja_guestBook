@@ -19,7 +19,8 @@ public class Edit extends HttpServlet {
         }
 
         UserDAO ud = new UserDAO();
-        request.setAttribute("user", ud.read(request.getParameter("user")));
+        String [] arr = {request.getParameter("u")};
+        request.setAttribute("user", ud.read(arr));
 
         getServletContext().getRequestDispatcher("/guestBook/edit.jsp").forward(request, response);
     }
@@ -29,7 +30,10 @@ public class Edit extends HttpServlet {
 
 //        User user = new User(request.getParameter("name"), request.getParameter("surname"),
 //                request.getParameter("email"), request.getParameter("password"), request.getParameter("nick"),
-//                request.getParameter("phone"));
+//                request.getParameter("phone"), request.getParameter("userId"));
+        User user = new User(request.getParameter("name"), request.getParameter("surname"),request.getParameter("email"),request.getParameter("password"),request.getParameter("nick"),request.getParameter("phone"),request.getParameter("userId"));
+
+        System.out.println(user.getUserId());
 
         try {
             DbUtil.getConnection();
@@ -37,8 +41,8 @@ public class Edit extends HttpServlet {
             e.printStackTrace();
         }
         UserDAO ud = new UserDAO();
-//        ud.update(user);
-        response.sendRedirect("/profil");
+        ud.update(user);
+        response.sendRedirect("/profil?u=" + user.getUserId());
     }
 
 }

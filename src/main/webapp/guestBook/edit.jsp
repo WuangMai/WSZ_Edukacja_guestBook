@@ -8,15 +8,16 @@
         <h1 class="h3 mb-0 text-gray-800">Księga gości</h1>
     </div>
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
+    <div class="card shadow mb-5">
+        <div class="card-header py-4">
             <h6 class="m-0 font-weight-bold text-primary">Edycja użytkownika</h6>
         </div>
 
-        <div class="mx-5" style="width: auto">
+        <div class="mx-md-5" style="width: auto">
             <form method="post" action="<c:url value="/edit"/> ">
+
                 <div class="form-group">
-                    <label for="name">Imię:</label>
+                    <label for="name" class="mt-4">Imię:</label>
                     <input type="text" name="name" class="form-control" id="name" value="${user.name}">
                 </div>
 
@@ -27,7 +28,7 @@
 
                 <div class="form-group">
                     <label for="nick">Nick:</label>
-                    <input type="text" name="email" class="form-control" id="nick" value="${user.nick}">
+                    <input type="text" name="nick" class="form-control" id="nick" value="${user.nick}">
                 </div>
 
                 <div class="form-group">
@@ -45,9 +46,14 @@
                     <input type="password" name="password" class="form-control" id="pass" value="">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <div class="form-group">
+                    <label for="userId"> Identyfikator użytkownika:</label>
+                    <input type="text" name="userId" class="form-control mb-4" id="userId" disabled value="${user.userId}">
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Zatwierdź</button>
             </form>
-            <a href="/profil?user=${user.email}" class="btn btn-secondary btn-block col-lg-1 ml-0">Wróć</a>
+            <a href="/profil?u=${user.userId}" class="btn btn-secondary btn-block col-lg-1 ml-0 mb-4">Wróć</a>
         </div>
 
 

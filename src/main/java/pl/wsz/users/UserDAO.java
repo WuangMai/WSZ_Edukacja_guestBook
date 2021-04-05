@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class UserDAO {
     private static final String CREATE_USER_QUERY = "INSERT INTO users(name, surname, email, phone, password, user_id) VALUES (?,?,?,?,?,?)";
     private static final String READ_USER_QUERY = "SELECT * FROM users WHERE id = ?";
-    private static final String UPDATE_USER_QUERY = "UPDATE users SET name = ?, surname = ?, nick = ?, email = ?, phone = ?, password = ? WHERE id = ?";
+    private static final String UPDATE_USER_QUERY = "UPDATE users SET name = ?, surname = ?, nick = ?, email = ?, phone = ?, password = ? WHERE user_id = ?";
     private static final String DELETE_USER_QUERY = "DELETE FROM users WHERE id = ?";
 
     private final String DBurl = "jdbc:mysql://localhost:3306/guest_book";
@@ -42,30 +42,30 @@ public class UserDAO {
         return null;
     }
 
-    public User read(int UserId) {
-        ResultSet rs = null;
-        PreparedStatement preStmt = null;
-        Connection conn = null;
-        User user = new User();
-
-        try {
-            conn = DriverManager.getConnection(DBurl, DBuser, DBpass);
-            preStmt = conn.prepareStatement(READ_USER_QUERY);
-            preStmt.setInt(1, UserId);
-
-            rs = preStmt.executeQuery();
-            if (rs.next()) {
-                int columnCount = rs.getMetaData().getColumnCount();
-                setUser(rs, user, columnCount);
-            }
-            return user;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } finally {
-            closeConnections(preStmt, conn, rs);
-        }
-        return null;
-    }
+//    public User read(int UserId) {
+//        ResultSet rs = null;
+//        PreparedStatement preStmt = null;
+//        Connection conn = null;
+//        User user = new User();
+//
+//        try {
+//            conn = DriverManager.getConnection(DBurl, DBuser, DBpass);
+//            preStmt = conn.prepareStatement(READ_USER_QUERY);
+//            preStmt.setInt(1, UserId);
+//
+//            rs = preStmt.executeQuery();
+//            if (rs.next()) {
+//                int columnCount = rs.getMetaData().getColumnCount();
+//                setUser(rs, user, columnCount);
+//            }
+//            return user;
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        } finally {
+//            closeConnections(preStmt, conn, rs);
+//        }
+//        return null;
+//    }
 
     public User read(String email) {
         ResultSet rs = null;
@@ -178,6 +178,7 @@ public class UserDAO {
             preStmt.setString(4, user.getEmail());
             preStmt.setString(5, user.getPhone());
             preStmt.setString(6, BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+            preStmt.setString(7, user.getUserId());
             int result = preStmt.executeUpdate();
             System.out.println(result > 0 ? "Successfully updated database!" : "Query not executed. Probably not existing User ID?");
 

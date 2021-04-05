@@ -1,6 +1,7 @@
 package pl.wsz.users;
 
 public class User {
+    private String userId;
     private int id;
     private String name;
     private String surname;
@@ -12,14 +13,14 @@ public class User {
     public User() {
     }
 
-    public User(int id, String name, String surname, String email, String password, String nick, String phone) {
-        this.id = id;
+    public User(String name, String surname, String email, String password, String nick, String phone, String userId) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.nick = nick;
         this.phone = phone;
+        this.userId = userId;
     }
 
     public User(String name, String surname, String email, String password, String phone) {
@@ -30,6 +31,13 @@ public class User {
         this.phone = phone;
     }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
 
     public String getPhone() {
         return phone;

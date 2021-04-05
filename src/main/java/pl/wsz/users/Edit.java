@@ -19,7 +19,7 @@ public class Edit extends HttpServlet {
         }
 
         UserDAO ud = new UserDAO();
-        request.setAttribute("user",ud.read(request.getParameter("user")));
+        request.setAttribute("user", ud.read(request.getParameter("user")));
 
         getServletContext().getRequestDispatcher("/guestBook/edit.jsp").forward(request, response);
     }
@@ -27,5 +27,18 @@ public class Edit extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+//        User user = new User(request.getParameter("name"), request.getParameter("surname"),
+//                request.getParameter("email"), request.getParameter("password"), request.getParameter("nick"),
+//                request.getParameter("phone"));
+
+        try {
+            DbUtil.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        UserDAO ud = new UserDAO();
+//        ud.update(user);
+        response.sendRedirect("/profil");
     }
+
 }

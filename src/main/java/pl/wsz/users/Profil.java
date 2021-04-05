@@ -19,7 +19,9 @@ public class Profil extends HttpServlet {
         }
 
         UserDAO ud = new UserDAO();
-        request.setAttribute("user",ud.read(request.getParameter("user")));
+        String[] arr = new String[1];
+        arr[0] = request.getParameter("u");
+        request.setAttribute("user",ud.read(arr));
 
         getServletContext().getRequestDispatcher("/guestBook/profil.jsp").forward(request, response);
 

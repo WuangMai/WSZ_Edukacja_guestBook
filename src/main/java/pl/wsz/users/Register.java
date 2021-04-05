@@ -41,9 +41,12 @@ public class Register extends HttpServlet {
             response.sendRedirect("/main");
         } else if (action[0].equals("add")) {
             if(!logged) {
-                User user = new User(request.getParameter("name"), request.getParameter("surname"), request.getParameter("email"), request.getParameter("password"), request.getParameter("phone"));
+                User user = new User(request.getParameter("name"), request.getParameter("surname"),
+                        request.getParameter("email"), request.getParameter("password"),
+                        request.getParameter("phone"));
                 ud.create(user);
-                getServletContext().getRequestDispatcher("/main").forward(request, response);
+                response.sendRedirect("/main");
+//                getServletContext().getRequestDispatcher("/main").forward(request, response);
             }else {
 //                TODO this does nothing right now. add actions in view
                 request.setAttribute("error","true");

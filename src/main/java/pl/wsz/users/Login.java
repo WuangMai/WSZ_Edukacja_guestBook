@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
                 response.addCookie(cookie);
                 System.out.println("success");
                 //TODO should this be in cookie?
-                response.sendRedirect("/profil?user="+user.getEmail());
+                response.sendRedirect("/profil?u="+user.getUserId());
 
             }else {
                 getServletContext().getRequestDispatcher("/guestBook/login.jsp").forward(request, response);

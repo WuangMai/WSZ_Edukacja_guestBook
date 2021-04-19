@@ -41,8 +41,7 @@
                     <label class="col-lg-6">${ sessionScope.logged.phone}</label>
                 </div>
                 <div class="form-group">
-                    <a href="/edit?u=${sessionScope.logged.userId}" class="btn btn-primary btn-block col-lg-3"> Edytuj
-                        dane</a>
+                    <a href="/edit" class="btn btn-primary btn-block col-lg-3"> Edytuj dane</a>
                     <a href="/logout" class="btn btn-danger btn-block col-lg-3"> Wyloguj się</a>
                 </div>
                 <div class="col-last">

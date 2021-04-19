@@ -1,24 +1,62 @@
 package pl.wsz.users.Book;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-import java.io.IOException;
+public class Book {
 
-@WebServlet("/book")
-public class Book extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession sess = request.getSession();
-        if (sess.getAttribute("logged") != null) {
-            getServletContext().getRequestDispatcher("/guestBook/book.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("/login");
-        }
+    private int id;
+    private int userId;
+    private String content;
+    private String addedTime;
+
+    public Book(int id, int userId, String content, String addedTime) {
+        this.id = id;
+        this.userId = userId;
+        this.content = content;
+        this.addedTime = addedTime;
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public Book(int userId, String content, String addedTime) {
+        this.userId = userId;
+        this.content = content;
+        this.addedTime = addedTime;
+    }
 
+    public Book() {
+    }
+
+    public Book(int userId, String content) {
+        this.userId = userId;
+        this.content = content;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getAddedTime() {
+        return addedTime;
+    }
+
+    public void setAddedTime(String addedTime) {
+        this.addedTime = addedTime;
     }
 }

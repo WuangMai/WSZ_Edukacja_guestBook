@@ -18,27 +18,30 @@
 
                 <div class="form-group">
                     <label for="name" class="mt-4">Imię:</label>
-                    <input type="text" name="name" class="form-control" id="name" value="${user.name}">
+                    <input type="text" name="name" class="form-control" id="name" value="${sessionScope.logged.name}">
                 </div>
 
                 <div class="form-group">
                     <label for="surname">Nazwisko:</label>
-                    <input type="text" name="surname" class="form-control" id="surname" value="${user.surname}">
+                    <input type="text" name="surname" class="form-control" id="surname"
+                           value="${sessionScope.logged.surname}">
                 </div>
 
                 <div class="form-group">
                     <label for="nick">Nick:</label>
-                    <input type="text" name="nick" class="form-control" id="nick" value="${user.nick}">
+                    <input type="text" name="nick" class="form-control" id="nick" value="${sessionScope.logged.nick}">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Adres email:</label>
-                    <input type="email" name="email" class="form-control" id="email" value="${user.email}">
+                    <input type="email" name="email" class="form-control" id="email"
+                           value="${sessionScope.logged.email}">
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Telefon:</label>
-                    <input type="number" name="phone" class="form-control" id="phone" value="${user.phone}">
+                    <input type="number" name="phone" class="form-control" id="phone"
+                           value="${sessionScope.logged.phone}">
                 </div>
 
                 <div class="form-group">
@@ -47,18 +50,20 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="userId"> Identyfikator użytkownika:</label>
-                    <input type="text" name="userId" class="form-control mb-4" id="userId"  value="${user.userId}" readonly>
+                    <%--                    <label for="userId"> Identyfikator użytkownika:</label>--%>
+                    <input type="text" name="userId" class="form-control mb-4" id="userId"
+                           value="${sessionScope.logged.userId}" hidden>
                 </div>
 
                 <div class="form-group">
-                    <label for="id"> Identyfikator użytkownika:</label>
-                    <input type="text" name="id" class="form-control mb-4 " id="id"  value="${user.id}" readonly>
+                    <%--                    <label for="id"> Identyfikator użytkownika:</label>--%>
+                    <input type="text" name="id" class="form-control mb-4 " id="id" value="${sessionScope.logged.id}"
+                           hidden>
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-2">Zatwierdź</button>
             </form>
-            <a href="/profil?u=${user.userId}" class="btn btn-secondary btn-block col-lg-1 ml-0 mb-4">Wróć</a>
+            <a href="/profil" class="btn btn-secondary btn-block col-lg-1 ml-0 mb-4">Wróć</a>
         </div>
 
 

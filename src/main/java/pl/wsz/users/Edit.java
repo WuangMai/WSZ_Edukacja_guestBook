@@ -2,9 +2,12 @@ package pl.wsz.users;
 
 import pl.wsz.utils.DbUtil;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -12,27 +15,22 @@ import java.sql.SQLException;
 public class Edit extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            DbUtil.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        HttpSession sess = request.getSession();
+        if (sess.getAttribute("logged") != null) {
+            getServletContext().getRequestDispatcher("/guestBook/edit.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("/login");
         }
-
-        UserDAO ud = new UserDAO();
-        String [] arr = {request.getParameter("u")};
-        request.setAttribute("user", ud.read(arr));
-
-        getServletContext().getRequestDispatcher("/guestBook/edit.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User user = new User(request.getParameter("userId"), (Integer.parseInt(request.getParameter("id"))),
+                request.getParameter("name"), request.getParameter("surname"),
+                request.getParameter("email"), request.getParameter("password"), request.getParameter("nick"),
+                request.getParameter("phone"));
 
-//TODO dodać jeśli nie ma zmian to nie updateuj
-        User user = new User(request.getParameter("userId"),(Integer.parseInt(request.getParameter("id"))),request.getParameter("name"),request.getParameter("surname"),
-                request.getParameter("email"),request.getParameter("password"),request.getParameter("nick"),request.getParameter("phone"));
-        System.out.println(user.getUserId());
-
+        HttpSession sess = request.getSession();
         try {
             DbUtil.getConnection();
         } catch (SQLException e) {
@@ -40,7 +38,8 @@ public class Edit extends HttpServlet {
         }
         UserDAO ud = new UserDAO();
         ud.update(user);
-        response.sendRedirect("/profil?u=" + user.getUserId());
+        sess.setAttribute("logged", user);
+        response.sendRedirect("/profil");
     }
 
 }

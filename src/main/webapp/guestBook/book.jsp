@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: wuang
-  Date: 19.04.2021
-  Time: 15:31
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/header.jsp" %>
 
 <div class="container-fluid">
@@ -26,11 +20,10 @@
                         <label for="content"> Dodaj wpis:</label>
                     </div>
                     <div class="form-group mt-0">
-
                         <textarea id="content" name="content" cols="50" rows="7"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" name="action" value="login">Zaloguj</button>
-                    <button type="submit" class="btn btn-secondary" name="action" value="back">Wróć</button>
+                    <a href="/profil" class="btn btn-secondary">Wróć</a>
                 </form>
             </div>
         </div>

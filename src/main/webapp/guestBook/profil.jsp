@@ -18,31 +18,32 @@
 
                 <div class="form-group">
                     <label class="col-lg-2">Imię:</label>
-                    <label class="col-lg-6">${user.name}</label>
+                    <label class="col-lg-6">${sessionScope.logged.name}</label>
                 </div>
 
                 <div class="form-group">
                     <label class="col-lg-2">Nazwisko:</label>
-                    <label class="col-lg-6">${user.surname}</label>
+                    <label class="col-lg-6">${sessionScope.logged.surname}</label>
                 </div>
 
                 <div class="form-group">
                     <label class="col-lg-2">Nick:</label>
-                    <label class="col-lg-6">${user.nick}</label>
+                    <label class="col-lg-6">${sessionScope.logged.nick}</label>
                 </div>
 
                 <div class="form-group">
                     <label class="col-lg-2">Adres email:</label>
-                    <label class="col-lg-6">${user.email}</label>
+                    <label class="col-lg-6">${sessionScope.logged.email}</label>
                 </div>
 
                 <div class="form-group">
                     <label class="col-lg-2">Telefon:</label>
-                    <label class="col-lg-6">${ user.phone}</label>
+                    <label class="col-lg-6">${ sessionScope.logged.phone}</label>
                 </div>
                 <div class="form-group">
-                    <a href="/edit?u=${user.userId}" class="btn btn-primary btn-block col-lg-6"> Edytuj dane</a>
-                    <a href="/logout" class="btn btn-danger btn-block col-lg-6"> Wyloguj się</a>
+                    <a href="/edit?u=${sessionScope.logged.userId}" class="btn btn-primary btn-block col-lg-3"> Edytuj
+                        dane</a>
+                    <a href="/logout" class="btn btn-danger btn-block col-lg-3"> Wyloguj się</a>
                 </div>
                 <div class="col-last">
                     <a href="/book" class="btn btn-primary btn-block">Księga Gości</a>

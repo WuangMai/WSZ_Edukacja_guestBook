@@ -20,7 +20,7 @@ public class UserDAO {
     public User create(User user) {
         HashClass hs = new HashClass();
 
-        try (Connection conn = DbUtil.getConnection()) {
+        try (Connection conn = DriverManager.getConnection(DBurl, DBuser, DBpass)) {
             PreparedStatement preStmt = conn.prepareStatement(CREATE_USER_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
             preStmt.setString(1, user.getName());
             preStmt.setString(2, user.getSurname());

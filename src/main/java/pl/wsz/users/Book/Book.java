@@ -9,7 +9,12 @@ import java.io.IOException;
 public class Book extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/guestBook/book.jsp").forward(request, response);
+        HttpSession sess = request.getSession();
+        if (sess.getAttribute("logged") != null) {
+            getServletContext().getRequestDispatcher("/guestBook/book.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("/login");
+        }
     }
 
     @Override

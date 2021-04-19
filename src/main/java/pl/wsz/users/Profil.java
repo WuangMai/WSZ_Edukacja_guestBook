@@ -12,17 +12,6 @@ import java.sql.SQLException;
 public class Profil extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            DbUtil.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        UserDAO ud = new UserDAO();
-        String[] arr = new String[1];
-        arr[0] = request.getParameter("u");
-        request.setAttribute("user",ud.read(arr));
-
         getServletContext().getRequestDispatcher("/guestBook/profil.jsp").forward(request, response);
 
     }

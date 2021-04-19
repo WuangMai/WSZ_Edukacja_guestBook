@@ -13,12 +13,16 @@ import java.sql.SQLException;
 public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/guestBook/register.jsp").forward(request, response);
+        HttpSession sess = request.getSession();
+        if (sess.getAttribute("logged") == null) {
+            getServletContext().getRequestDispatcher("/guestBook/register.jsp").forward(request, response);
+        } else {
+            response.sendRedirect("/profil");
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
         String[] action = request.getParameterValues("action");
         UserDAO ud = new UserDAO();

@@ -25,7 +25,7 @@
                         <input type="password" name="password" class="form-control" id="pass">
                     </div>
                     <button type="submit" class="btn btn-primary" name="action" value="login">Zaloguj</button>
-                    <button type="submit" class="btn btn-secondary" name="action" value="back">Wróć</button>
+                    <a href="/main" class="btn btn-secondary">Wróć</a>
                 </form>
             </div>
         </div>

@@ -43,7 +43,9 @@
                 <div class="form-group">
                     <a href="/edit?u=${user.userId}" class="btn btn-primary btn-block col-lg-6"> Edytuj dane</a>
                     <a href="/logout" class="btn btn-danger btn-block col-lg-6"> Wyloguj się</a>
-
+                </div>
+                <div class="col-last">
+                    <a href="/book" class="btn btn-primary btn-block">Księga Gości</a>
                 </div>
             </div>
         </div>

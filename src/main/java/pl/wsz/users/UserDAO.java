@@ -2,6 +2,7 @@ package pl.wsz.users;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.mindrot.jbcrypt.BCrypt;
+import pl.wsz.utils.DbUtil;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -19,7 +20,7 @@ public class UserDAO {
     public User create(User user) {
         HashClass hs = new HashClass();
 
-        try (Connection conn = DriverManager.getConnection(DBurl, DBuser, DBpass)) {
+        try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(CREATE_USER_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
             preStmt.setString(1, user.getName());
             preStmt.setString(2, user.getSurname());

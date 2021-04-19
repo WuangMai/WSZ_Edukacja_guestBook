@@ -38,7 +38,6 @@ public class Login extends HttpServlet {
 
             User user;
             user = ud.read(login);
-//TODO cookies encryption
 
             if (login.equals(user.getEmail()) && BCrypt.checkpw(pass, user.getPassword())) {
                 request.setAttribute("success", true);

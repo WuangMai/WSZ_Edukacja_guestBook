@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="UsersCRUD" />
         <module name="guestBook" />
+        <module name="guest-book" />
       </profile>
     </annotationProcessing>
   </component>

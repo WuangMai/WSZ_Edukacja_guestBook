@@ -13,7 +13,7 @@
 
         <div class="card-body">
             <div class="mx-5 mb-0" style="width: auto">
-                <form method="post" action="/book">
+                <form method="post" action="/entry">
                     <div class="form-group">
                         <label>Twój nick:</label>
                         <label>${sessionScope.logged.nick}</label><br/>
@@ -34,13 +34,13 @@
             <h6 class="m-0 font-weight-bold text-primary">Ostatnie wpisy:</h6>
         </div>
 
-        <c:forEach items="${entryList}" var="entry">
+        <c:forEach items="${entryMap}" var="entry">
             <div class="mx-4 mb-4 mt-3">
                 <div class="card bg-secondary text-white shadow">
                     <div class="card-body">
-                        <p>${entry.content}</p>
-                        <div class="text-black-50 font-weight-bold">Autor: ${entry.userId}</div>
-                        <div class="text-black-50 font-weight-bold">Data: ${entry.addedTime}</div>
+                        <p>${entry.key.content}</p>
+                        <div class="text-black-50 font-weight-bold">Autor: ${entry.value.nick}</div>
+                        <div class="text-black-50 font-weight-bold">Data: ${entry.key.addedTime}</div>
                     </div>
                 </div>
             </div>

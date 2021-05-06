@@ -45,7 +45,7 @@
                     <a href="/logout" class="btn btn-danger btn-block col-lg-3"> Wyloguj się</a>
                 </div>
                 <div class="col-last">
-                    <a href="/book" class="btn btn-primary btn-block">Księga Gości</a>
+                    <a href="/entry" class="btn btn-primary btn-block">Księga Gości</a>
                 </div>
             </div>
         </div>

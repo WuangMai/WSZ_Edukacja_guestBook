@@ -1,29 +1,29 @@
-package pl.wsz.users.Book;
+package pl.wsz.users.Entry;
 
-public class Book {
+public class Entry {
 
     private int id;
     private int userId;
     private String content;
     private String addedTime;
 
-    public Book(int id, int userId, String content, String addedTime) {
+    public Entry(int id, int userId, String content, String addedTime) {
         this.id = id;
         this.userId = userId;
         this.content = content;
         this.addedTime = addedTime;
     }
 
-    public Book(int userId, String content, String addedTime) {
+    public Entry(int userId, String content, String addedTime) {
         this.userId = userId;
         this.content = content;
         this.addedTime = addedTime;
     }
 
-    public Book() {
+    public Entry() {
     }
 
-    public Book(int userId, String content) {
+    public Entry(int userId, String content) {
         this.userId = userId;
         this.content = content;
     }

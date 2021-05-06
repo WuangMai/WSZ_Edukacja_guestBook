@@ -20,7 +20,7 @@
                 <div class="text-center ">
                     <a href="/login" class="btn btn-primary btn-block" style="width: 200px;"> Logowanie</a>
                     <a href="/register" class="btn btn-primary btn-block"> Rejestracja</a>
-                    <a href="/book" class="btn btn-primary btn-block"> Księga gości</a>
+                    <a href="/entry" class="btn btn-primary btn-block"> Księga gości</a>
                 </div>
             </div>
         </div>
